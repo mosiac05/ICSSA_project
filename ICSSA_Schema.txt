@@ -1,0 +1,63 @@
+Authentication
+***Three groups of users
+	---Superadmin
+	---President
+	---Students
+
+***********************************************
+STUDENT
+	first_name
+	last_name
+	matric_number
+	access_code
+	level
+	phone_number
+	email_address
+
+
+LEVEL
+	name
+
+DEPARTMENTAL INFO
+	title
+	body
+
+
+EXCECUTIVE TENURE
+	year
+	title
+	active
+
+EXECUTIVE POST
+	title
+
+
+EXECUTIVE MEMBER
+	(student_object)
+	tenure
+	post
+
+
+
+POLL
+	title
+	date_created
+	running_hours(min of 1hr)
+	level(object)
+	status
+
+POLL CHOICES
+	poll(object)
+	choice
+
+
+POLL PARTICIPANT
+	poll_id
+	student_id
+	option
+
+POLL INFO
+	poll_id
+	total_number
+	count_per_option
+	num_of_students_per_level
