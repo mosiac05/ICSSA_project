@@ -9,7 +9,7 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Student
-        fields = ['id', 'is_president', 'is_active', 'email', 'access_code', 'first_name', 'last_name', 'matric_number','level', 'date_created']
+        fields = ['id', 'is_active', 'email', 'access_code', 'first_name', 'last_name', 'matric_number','level', 'date_created']
         # read_only_fields = ['access_code', 'date_created']
 
 class LevelSerializer(serializers.HyperlinkedModelSerializer):
@@ -20,6 +20,7 @@ class LevelSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'name']
 
 class DepartmentalInfoSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = DepartmentalInfo
         fields = ['id', 'title', 'body']
@@ -30,11 +31,13 @@ class ExecutiveTenureSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'year', 'title', 'is_active']
 
 class ExecutivePostSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = ExecutivePost
         fields = ['title']
 
 class ExecutiveMemberSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = ExecutiveMember
         fields = ['member', 'tenure', 'post']
@@ -46,6 +49,7 @@ class PollQuestionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['level', 'question', 'running_hours', 'status']
 
 class PollChoiceSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = PollChoice
         fields = ['poll', 'choice']

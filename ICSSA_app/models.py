@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 from pygments.formatters.html import HtmlFormatter
 from pygments import highlight
 import random
@@ -24,7 +25,6 @@ class Level(models.Model):
 		return self.name
 
 class Student(models.Model):
-	is_president = models.BooleanField(default=False)
 	is_active = models.BooleanField(default=True)
 	email = models.EmailField(unique=True)
 	access_code = models.CharField(max_length=10, editable=False)
@@ -102,6 +102,15 @@ class PollParticipant(models.Model):
 	poll = models.ForeignKey(PollQuestion, on_delete=models.CASCADE)
 	student = models.ForeignKey(Student, on_delete=models.CASCADE)
 	choice = models.ForeignKey(PollChoice, on_delete=models.CASCADE)
+
+	class Meta:
+		unique_together = ("poll","student")
+	# def save(self, *args, **kwargs):
+	# 	studentExists = PollParticipant.objects.filter(student=self.student).filter(poll=self.poll).exists()
+	# 	if not studentExists:
+	# 		super(Student, self).save(*args, **kwargs)
+	# 	else:
+	# 		raise ValidationError({ "meassage": "Student has already participated for this poll" })
 
 	def __str__(self):
 		return "{}, {}".format(self.student.matric_number, self.poll.question)

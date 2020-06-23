@@ -14,5 +14,5 @@ router.register(r'poll-choices', views.PollChoiceViewSet),
 router.register(r'poll-participants', views.PollParticipantViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('/', include(router.urls)),
 ]

@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from ICSSA_app.views import HomeView
 
 urlpatterns = [
-    path('', include('ICSSA_app.urls')),
+    path('', HomeView.as_view()),
+    path('api/v1', include('ICSSA_app.urls')),
+    path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
 ]
